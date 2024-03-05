@@ -3,12 +3,28 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Hello!</title>
+    <title>xxxxx</title>
 </head>
 
 <body>
     <h1>Hello!</h1>
-    <p>Hi from Rust  aaa</p>
+    <p>Hi from Rust </p>
+
+    <p>当前时间是：<span id="current-time"></span></p>
+
+    <script>
+        // 获取当前时间
+        var currentTime = new Date();
+
+        // 格式化时间为 HH:MM:SS
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+        var timeString = hours + ':' + minutes + ':' + seconds;
+
+        // 将时间显示在页面上
+        document.getElementById('current-time').innerText = timeString;
+    </script>
 </body>
 
 </html>
