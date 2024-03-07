@@ -9,16 +9,21 @@ fn main() {
 
     let pool = ThreadPool::new(4);
 
-    for stream in listener.incoming() {
+    let mut cnt: i32 = 0;
+
+    for stream in listener.incoming().take(5) {
         let stream = stream.unwrap();
 
-     pool.execute(|| {
+        cnt += 1;
+        println!("execute {}",  cnt);
+
+        pool.execute(|| {
             handle_connection(stream);
         });
-
-
-
     }
+
+    println!("Shutting down.");
+
 }
 fn handle_connection(mut stream: TcpStream) {
     let mut buffer = [0; 512];
